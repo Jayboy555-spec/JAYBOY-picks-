@@ -1,0 +1,417 @@
+/* =========================
+   GLOBAL SETTINGS
+========================= */
+:root {
+    --bg: #080b14;
+    --card: #101726;
+    --card-light: #151f32;
+    --blue: #168cff;
+    --blue-light: #56b4ff;
+    --white: #ffffff;
+    --muted: #a9b5c9;
+    --border: rgba(255,255,255,0.09);
+    --green: #43e0a0;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+body { font-family: Arial, Helvetica, sans-serif; background: var(--bg); color: var(--white); line-height: 1.6; }
+a { text-decoration: none; color: inherit; }
+button { font-family: inherit; }
+.container { width: 90%; max-width: 1150px; margin: auto; }
+.section { padding: 75px 0; scroll-margin-top: 85px; }
+.section-heading { text-align: center; margin-bottom: 35px; }
+.section-heading h2 { font-size: clamp(25px, 5vw, 36px); margin-bottom: 10px; }
+.section-heading p { color: var(--muted); max-width: 600px; margin: auto; }
+.highlight { color: var(--blue-light); }
+
+/* HEADER AND NAVIGATION */
+header { background: rgba(8,11,20,0.96); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(14px); }
+.navbar { min-height: 75px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+.logo { font-size: 21px; font-weight: 900; letter-spacing: 1px; white-space: nowrap; }
+.logo span { color: var(--blue-light); }
+.nav-links { display: flex; align-items: center; gap: 22px; }
+.nav-links a { font-size: 14px; color: var(--muted); transition: 0.25s; }
+.nav-links a:hover { color: var(--blue-light); }
+.menu-button { display: none; color: white; background: transparent; border: 1px solid var(--border); padding: 8px 12px; border-radius: 8px; font-size: 21px; cursor: pointer; }
+
+/* BUTTONS */
+.button { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 18px; border-radius: 9px; font-size: 14px; font-weight: bold; text-align: center; transition: 0.25s; border: none; cursor: pointer; }
+.button-primary { background: var(--blue); color: white; }
+.button-primary:hover { background: #0874df; transform: translateY(-2px); }
+.button-outline { border: 1px solid var(--blue); color: var(--blue-light); background: transparent; }
+.button-outline:hover { background: rgba(22,140,255,0.12); }
+.button-disabled { background: #293244; color: #b8c1d0; cursor: not-allowed; pointer-events: none; }
+
+/* HERO */
+.hero { min-height: 490px; display: flex; align-items: center; padding: 85px 0; overflow: hidden; background: radial-gradient(ellipse at 80% 25%, rgba(22,140,255,0.18), transparent 45%), linear-gradient(140deg, #080b14, #0b1424); }
+.hero-content { max-width: 760px; }
+.hero-label { display: inline-block; padding: 7px 13px; border: 1px solid rgba(86,180,255,0.35); background: rgba(22,140,255,0.10); color: var(--blue-light); border-radius: 30px; font-size: 12px; font-weight: bold; letter-spacing: 1px; margin-bottom: 22px; }
+.hero h1 { font-size: clamp(38px, 7vw, 68px); line-height: 1.12; margin-bottom: 22px; }
+.hero p { max-width: 600px; color: var(--muted); font-size: 17px; margin-bottom: 28px; }
+.hero-buttons { display: flex; gap: 13px; flex-wrap: wrap; }
+
+/* CATEGORY STRIP */
+.category-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: -25px; position: relative; }
+.category-box { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 23px; text-align: center; }
+.category-box .icon { font-size: 30px; margin-bottom: 8px; }
+.category-box h3 { font-size: 16px; margin-bottom: 5px; }
+.category-box p { color: var(--muted); font-size: 13px; }
+
+/* PRODUCT AND PROGRAMME CARDS */
+.service-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+.service-card { display: flex; flex-direction: column; align-items: flex-start; background: linear-gradient(145deg, var(--card), #0d1320); border: 1px solid var(--border); border-radius: 16px; padding: 25px; transition: 0.25s; min-width: 0; }
+.service-card:hover { transform: translateY(-5px); border-color: rgba(22,140,255,0.5); box-shadow: 0 12px 30px rgba(0,0,0,0.18); }
+.service-icon { width: 55px; height: 55px; display: grid; place-items: center; background: rgba(22,140,255,0.13); border: 1px solid rgba(22,140,255,0.22); border-radius: 13px; font-size: 28px; margin-bottom: 18px; }
+.status-badge { display: inline-block; padding: 5px 9px; border-radius: 20px; font-size: 11px; font-weight: bold; margin-bottom: 13px; }
+.active { background: rgba(67,224,160,0.12); color: var(--green); }
+.pending { background: rgba(255,190,70,0.12); color: #ffc45e; }
+.check-status { background: rgba(86,180,255,0.12); color: var(--blue-light); }
+.service-card h3 { font-size: 21px; margin-bottom: 10px; }
+.service-card > p { font-size: 14px; color: var(--muted); margin-bottom: 17px; }
+.service-card .button { width: 100%; margin-top: auto; }
+.small-note { font-size: 11px !important; margin-top: 15px; margin-bottom: 0 !important; color: #8f9bb0 !important; }
+.secondary-link { display: inline-block; margin-top: 12px; color: var(--blue-light); font-size: 12px; text-decoration: underline; }
+
+/* ABOUT SECTION */
+.about-box { max-width: 850px; margin: auto; padding: 32px; border: 1px solid var(--border); background: var(--card); border-radius: 16px; }
+.about-box h3 { margin-bottom: 12px; font-size: 23px; }
+.about-box p { color: var(--muted); margin-bottom: 15px; }
+.disclosure { border-left: 3px solid var(--blue); padding: 14px 17px; background: rgba(22,140,255,0.08); border-radius: 0 8px 8px 0; font-size: 13px; }
+
+/* FOOTER */
+footer { border-top: 1px solid var(--border); padding: 35px 0 22px; background: #060910; }
+.footer-top { display: flex; justify-content: space-between; gap: 25px; flex-wrap: wrap; margin-bottom: 25px; }
+.footer-brand { max-width: 350px; }
+.footer-brand p { color: var(--muted); font-size: 13px; margin-top: 10px; }
+.footer-links { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
+.footer-links a { color: var(--muted); font-size: 13px; }
+.footer-links a:hover { color: var(--blue-light); }
+.footer-bottom { border-top: 1px solid var(--border); padding-top: 18px; text-align: center; color: #7f8ba0; font-size: 12px; }
+
+/* MOBILE RESPONSIVENESS */
+@media (max-width: 850px) {
+    .service-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .nav-links { gap: 14px; }
+    .nav-links a { font-size: 12px; }
+}
+@media (max-width: 600px) {
+    .container { width: 91%; }
+    .navbar { min-height: 68px; }
+    .logo { font-size: 18px; }
+    .menu-button { display: block; }
+    .nav-links { display: none; position: absolute; top: 68px; left: 0; right: 0; background: #0b101c; padding: 18px 5%; border-bottom: 1px solid var(--border); flex-direction: column; align-items: stretch; gap: 0; }
+    .nav-links.show { display: flex; }
+    .nav-links a { display: block; padding: 12px 0; font-size: 15px; border-bottom: 1px solid var(--border); }
+    .hero { min-height: auto; padding: 75px 0 65px; }
+    .hero h1 { font-size: 40px; }
+    .hero p { font-size: 15px; }
+    .category-strip { grid-template-columns: 1fr; margin-top: 0; padding-top: 22px; }
+    .category-box { padding: 18px; }
+    .section { padding: 55px 0; }
+    .service-grid { grid-template-columns: 1fr; gap: 17px; }
+    .service-card { padding: 22px; }
+    .about-box { padding: 23px; }
+    .footer-top { flex-direction: column; }
+}
+/* ==========================================
+   JÃYBÕY PICKS — FUTUREVERSE 2.0
+   Electric atmosphere • Energy • Motion
+========================================== */
+
+:root {
+    --electric: #00e5ff;
+    --blue: #1677ff;
+    --purple: #8b5cff;
+    --pink: #ff4fd8;
+}
+
+/* 1. DEEPER, MORE DYNAMIC BACKGROUND */
+
+body {
+    background-color: #030611;
+    background-image:
+        radial-gradient(ellipse at 15% 20%,
+            rgba(0, 119, 255, .25), transparent 38%),
+        radial-gradient(ellipse at 85% 30%,
+            rgba(139, 92, 255, .17), transparent 38%),
+        radial-gradient(ellipse at 50% 100%,
+            rgba(0, 229, 255, .12), transparent 42%),
+        linear-gradient(135deg, #030611, #071329, #030611);
+    background-size: 180% 180%;
+    animation: futureverseAtmosphere 12s ease-in-out infinite alternate;
+}
+
+@keyframes futureverseAtmosphere {
+    0% {
+        background-position: 0% 0%;
+    }
+    50% {
+        background-position: 100% 60%;
+    }
+    100% {
+        background-position: 20% 100%;
+    }
+}
+
+/* 2. MOVING FUTURISTIC GRID */
+
+body {
+    position: relative;
+}
+
+body .future-grid {
+    display: none;
+}
+
+body::marker {
+    content: "";
+}
+
+/* The grid stays behind page content */
+body::before {
+    background-image:
+        linear-gradient(rgba(0, 140, 255, .09) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 140, 255, .09) 1px, transparent 1px),
+        linear-gradient(
+            transparent 35%,
+            rgba(0, 229, 255, .09) 50%,
+            transparent 65%
+        );
+    background-size: 42px 42px, 42px 42px, 100% 100%;
+    background-position: center;
+    opacity: .4;
+    animation: gridFlow 12s linear infinite;
+}
+
+@keyframes gridFlow {
+    from {
+        background-position: 0 0, 0 0, 0 -100vh;
+    }
+    to {
+        background-position: 42px 84px, 84px 42px, 0 100vh;
+    }
+}
+
+/* 3. STRONGER LIGHT ORB */
+
+body::after {
+    background:
+        radial-gradient(circle,
+            rgba(0, 229, 255, .26) 0%,
+            rgba(0, 119, 255, .16) 30%,
+            rgba(139, 92, 255, .08) 50%,
+            transparent 72%);
+    filter: blur(22px);
+    animation: orbTravel 9s ease-in-out infinite alternate;
+}
+
+/* 4. PREMIUM HERO SECTION */
+
+.hero,
+.hero-section,
+.hero-content {
+    position: relative;
+}
+
+.hero-content {
+    isolation: isolate;
+}
+
+/* Glowing headline */
+.hero-content h1 {
+    animation: heroTitleEntrance 1.1s cubic-bezier(.16, 1, .3, 1) both;
+    text-shadow:
+        0 0 12px rgba(0, 140, 255, .22),
+        0 0 35px rgba(0, 119, 255, .16);
+}
+
+.hero-content h1 .highlight,
+.hero-content h1 .gradient-text {
+    background: linear-gradient(
+        100deg,
+        #ffffff 0%,
+        #00e5ff 25%,
+        #1677ff 50%,
+        #b7a0ff 75%,
+        #ffffff 100%
+    );
+    background-size: 250% auto;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: neonTextFlow 4s linear infinite;
+}
+
+@keyframes neonTextFlow {
+    to {
+        background-position: 250% center;
+    }
+}
+
+@keyframes heroTitleEntrance {
+    from {
+        opacity: 0;
+        transform: translateY(28px);
+        filter: blur(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+    }
+}
+
+/* 5. CARD BORDER ENERGY */
+
+.service-card {
+    border: 1px solid rgba(0, 229, 255, .3);
+    background:
+        linear-gradient(145deg,
+            rgba(12, 27, 55, .97),
+            rgba(4, 9, 23, .98));
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, .18),
+        inset 0 1px rgba(255, 255, 255, .025);
+    transition:
+        transform .35s cubic-bezier(.2, .8, .2, 1),
+        border-color .35s ease,
+        box-shadow .35s ease;
+}
+
+/* Moving light inside each card */
+.service-card .service-icon {
+    position: relative;
+    filter:
+        drop-shadow(0 0 8px rgba(0, 229, 255, .65))
+        drop-shadow(0 0 18px rgba(22, 119, 255, .25));
+    animation: iconLevitate 2.5s ease-in-out infinite;
+}
+
+@keyframes iconLevitate {
+    0%, 100% {
+        transform: translateY(0) rotate(0);
+    }
+    50% {
+        transform: translateY(-8px) rotate(5deg);
+    }
+}
+
+/* Card light sweep */
+.service-card {
+    background-size: 100% 100%;
+}
+
+.service-card:hover {
+    border-color: var(--electric);
+    box-shadow:
+        0 0 0 1px rgba(0, 229, 255, .12),
+        0 0 22px rgba(0, 140, 255, .22),
+        0 18px 42px rgba(0, 0, 0, .35);
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .service-card:hover {
+        transform: translateY(-9px) scale(1.015);
+    }
+}
+
+/* 6. MORE NOTICEABLE BUTTON ANIMATION */
+
+.button {
+    background-image: linear-gradient(
+        110deg,
+        #064bc1 0%,
+        #078cff 25%,
+        #00d9ff 50%,
+        #8b5cff 75%,
+        #064bc1 100%
+    );
+    background-size: 300% 100%;
+    animation: buttonEnergy 3s linear infinite;
+    border: 1px solid rgba(0, 229, 255, .65);
+    box-shadow:
+        0 0 12px rgba(0, 140, 255, .24),
+        inset 0 0 8px rgba(255, 255, 255, .08);
+}
+
+.button:hover {
+    box-shadow:
+        0 0 18px rgba(0, 229, 255, .45),
+        0 0 38px rgba(0, 119, 255, .2);
+}
+
+/* 7. GLASS-LIKE HEADER */
+
+header {
+    transition:
+        background-color .35s ease,
+        border-color .35s ease,
+        box-shadow .35s ease;
+}
+
+header.scrolled,
+header.header-glow {
+    background-color: rgba(3, 8, 23, .92);
+    border-bottom: 1px solid rgba(0, 229, 255, .18);
+    box-shadow: 0 5px 28px rgba(0, 119, 255, .16);
+}
+
+/* 8. STATUS BADGES WITH NEON LIGHT */
+
+.status-badge {
+    border-color: rgba(0, 229, 255, .4);
+    box-shadow: 0 0 10px rgba(0, 229, 255, .08);
+    transition: box-shadow .3s ease;
+}
+
+.status-badge:hover {
+    box-shadow: 0 0 18px rgba(0, 229, 255, .25);
+}
+
+/* 9. BETTER TEXT READABILITY */
+
+.service-card p {
+    line-height: 1.75;
+}
+
+.section-heading p {
+    opacity: .88;
+}
+
+/* 10. MOBILE OPTIMIZATION */
+
+@media (max-width: 600px) {
+    body {
+        background-size: 220% 220%;
+    }
+
+    .hero-content h1 {
+        line-height: 1.15;
+    }
+
+    .service-card {
+        box-shadow: 0 6px 22px rgba(0, 0, 0, .25);
+    }
+
+    .service-card:hover {
+        transform: none;
+    }
+}
+
+/* 11. ACCESSIBILITY */
+
+@media (prefers-reduced-motion: reduce) {
+    body,
+    body::before,
+    body::after,
+    .hero-content h1,
+    .hero-content h1 .highlight,
+    .hero-content h1 .gradient-text,
+    .service-icon,
+    .button {
+        animation: none !important;
+    }
+
+    html {
+        scroll-behavior: auto;
+    }
+}
